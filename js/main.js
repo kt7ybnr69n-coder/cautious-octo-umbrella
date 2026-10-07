@@ -66,10 +66,12 @@
   if (form) {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      const success = document.querySelector(".form-success");
+      const success = form.querySelector(".form-success");
       if (success) {
         success.classList.add("is-visible");
-        success.focus?.();
+        success.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        success.setAttribute("tabindex", "-1");
+        success.focus({ preventScroll: true });
       }
       form.reset();
     });
